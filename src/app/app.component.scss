@@ -1,11 +1,21 @@
 
 .titlebar
 {
-    display: block;
+    display: flex;
     position: relative;
     height: 32px;
     padding: 0;
     background-color: #343a40;
+    color: #FFF;
+    font-weight: bold;
+    margin-top: 1px;
+}
+
+.titlebar {
+    .title-text{
+        padding: 5px 30px;
+        flex: 1 0;
+    }
 }
 
 .titlebar.draggable
