@@ -1,0 +1,63 @@
+
+<div class="main-container">
+
+  <div class="card text-white bg-dark mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Select Save Folder <i (click)="showInfo = !showInfo" class="info-circle"></i>
+      </h5>
+
+      <p *ngIf="showInfo">
+        Move a folder with save files to your Axiom Verge Saves folder usually <br> (C:\Users\{{ '{userName}' }}\Documents\SavedGames\AxiomVerge\Saves\Player1)
+        <br>Select said folder using the File Browser below.
+        <br>
+      </p>
+
+      <div class="select-file">
+        <div class="input-group">
+          <div class="custom-file">
+            <input type="file" webkitdirectory class="custom-file-input" (change)="onFolderSelect($event)">
+            <label class="custom-file-label" for="inputGroupFile04">
+              {{saveFolder || 'Select Save Folder'}}
+            </label>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Area</th>
+        <th scope="col">Location</th>
+        <th scope="col">Health Nodes</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td>{{row.area}}</td>
+        <td>{{row.loc}}</td>
+        <td>{{row.nodes}}</td>
+        <td>
+          <button *ngIf="row.file !== activeFile"
+           class="btn btn-secondary btn-sm" (click)="copyFile(row.file)">
+            Replace
+          </button>
+          <button *ngIf="row.file === activeFile && !replaced" class="btn btn-success btn-sm"
+                  (click)="copyFile(row.file)">
+              Saved
+          </button>
+          <button *ngIf="row.file === activeFile && replaced" class="btn btn-warning btn-sm"
+          (click)="copyFile(row.file)">
+            Overwritten
+          </button>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
