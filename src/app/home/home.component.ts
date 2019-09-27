@@ -73,14 +73,20 @@ export class HomeComponent {
   }
 
   watchSaveFile(){
-    if(this.saveFile){
-      fs.unwatchFile(this.saveFile);
-    }
+    this.unwatchSaveFile();
 
     fs.watchFile(this.saveFile, (curr) => {
       this.replaced = true;
+      this.activeFile = null;
+      fs.unwatchFile(this.saveFile);
       this.changeDetector.detectChanges();
     });
+  }
+
+  unwatchSaveFile() {
+    if(this.saveFile){
+      fs.unwatchFile(this.saveFile);
+    }
   }
 
 }

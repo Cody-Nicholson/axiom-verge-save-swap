@@ -45,13 +45,9 @@
            class="btn btn-secondary btn-sm" (click)="copyFile(row.file)">
             Replace
           </button>
-          <button *ngIf="row.file === activeFile && !replaced" class="btn btn-success btn-sm"
+          <button *ngIf="row.file === activeFile" class="btn btn-success btn-sm"
                   (click)="copyFile(row.file)">
               Saved
-          </button>
-          <button *ngIf="row.file === activeFile && replaced" class="btn btn-warning btn-sm"
-          (click)="copyFile(row.file)">
-            Overwritten
           </button>
 
         </td>
